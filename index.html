@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sentient Terminal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- INTRO SCREEN -->
+  <div id="introScreen">
+    <div id="introText">Ready to enter<br>Sentient Terminal?</div>
+
+    <!-- Simple Play SVG Icon -->
+    <svg id="enterBtn" class="play-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="35,25 75,50 35,75" fill="whitesmoke" />
+    </svg>
+  </div>
+
+  <!-- TERMINAL -->
+  <div id="terminalContainer" class="mac-terminal">
+    <div class="mac-header">
+      <div class="mac-buttons">
+        <div class="mac-dot bg-mac-red"></div>
+        <div class="mac-dot bg-mac-yellow"></div>
+        <div class="mac-dot bg-mac-green"></div>
+      </div>
+      <div class="mac-title">macOS Terminal — Project Sentient</div>
+    </div>
+
+    <div id="terminalScreen" class="terminal-screen">
+      <div id="output" class="space-y-1 terminal-line">
+        <p>Initializing macOS interface...</p>
+        <p>Connected to <span class="text-green-400">Project Sentient v1.0</span></p>
+        <p>Type <span class="text-cyan-400">'help'</span> for a list of commands.</p>
+        <p>Access AGI via: <span class="text-purple-400">/grid What is AI?</span></p>
+      </div>
+      <div id="inputLine" class="flex mt-2 items-center">
+        <span class="text-green-400">$&nbsp;</span>
+        <input type="text" id="commandInput" autocomplete="off" autofocus class="cursor" placeholder="Type your command..." />
+      </div>
+    </div>
+
+    <!-- Bottom-right image -->
+    <img 
+      src="senti2.png" 
+      alt="Hydra Logo" 
+      class="absolute bottom-2 right-2 w-16 h-16 opacity-60 hover:opacity-100 transition duration-300 rounded drop-shadow-lg"
+    />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

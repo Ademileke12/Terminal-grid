@@ -1,0 +1,156 @@
+body {
+  background: linear-gradient(145deg, #000000, #1a1a1a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* ---------- INTRO SCREEN ---------- */
+#introScreen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  transition: opacity 1s ease;
+}
+
+#introText {
+  font-family: 'Press Start 2P', monospace;
+  color: whitesmoke;
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+  transition: transform 0.3s, text-shadow 0.3s;
+}
+
+#introText:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+.play-svg {
+  width: 80px;
+  height: 80px;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s, filter 0.3s;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+}
+
+.play-svg:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 30px rgba(255,255,255,0.9));
+}
+
+/* ---------- TERMINAL ---------- */
+.mac-terminal {
+  backdrop-filter: blur(12px);
+  background: rgba(30, 30, 30, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  color: whitesmoke;
+  position: relative;
+  display: none;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* ✅ Add this overlay pseudo-element for background image */
+.mac-terminal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("senti2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain; /* or "cover" depending on your image */
+  opacity: 0.15; /* adjust transparency here */
+  pointer-events: none; /* ensure the image doesn’t block clicks */
+  z-index: 0;
+}
+
+/* ✅ Ensure terminal content stays above the image */
+.mac-terminal > * {
+  z-index: 1;
+}
+
+.mac-header {
+  background: rgba(45, 45, 45, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mac-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mac-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mac-title {
+  color: #c0c0c0;
+  font-size: 0.9rem;
+  text-align: center;
+  flex-grow: 1;
+  margin-left: -2rem;
+}
+
+.terminal-screen {
+  font-family: 'Menlo', monospace;
+  color: var(--tw-colors-mac-text);
+  height: 480px;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: transparent;
+}
+
+.terminal-screen::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-screen::-webkit-scrollbar-thumb {
+  background-color: rgba(200, 200, 200, 0.2);
+  border-radius: 3px;
+}
+
+#commandInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--tw-colors-mac-text);
+  width: 100%;
+  font-family: Menlo, monospace;
+}
+
+.terminal-line {
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.cursor::after {
+  content: "▌";
+  animation: blink 1s infinite step-start;
+}
