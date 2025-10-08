@@ -58,7 +58,7 @@ body {
   border-radius: 0.75rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   overflow: hidden;
-  width: 100%;
+  width: 90%;
   max-width: 800px;
   color: whitesmoke;
   position: relative;
@@ -66,9 +66,10 @@ body {
   flex-direction: column;
   opacity: 0;
   transition: opacity 1s ease;
+  margin: 1rem auto;
 }
 
-/* ✅ Add this overlay pseudo-element for background image */
+/* Background image overlay */
 .mac-terminal::before {
   content: "";
   position: absolute;
@@ -76,15 +77,90 @@ body {
   background-image: url("senti2.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain; /* or "cover" depending on your image */
-  opacity: 0.15; /* adjust transparency here */
-  pointer-events: none; /* ensure the image doesn’t block clicks */
+  background-size: contain;
+  opacity: 0.15;
+  pointer-events: none;
   z-index: 0;
 }
 
-/* ✅ Ensure terminal content stays above the image */
 .mac-terminal > * {
+  position: relative;
   z-index: 1;
+}
+
+/* Adjust header for small screens */
+.mac-header {
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+/* Terminal content */
+.terminal-screen {
+  font-family: 'Menlo', monospace;
+  color: var(--tw-colors-mac-text);
+  height: 60vh; /* instead of fixed px height */
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: transparent;
+}
+
+/* Smaller input area for mobile */
+#commandInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--tw-colors-mac-text);
+  width: 100%;
+  font-family: Menlo, monospace;
+  font-size: 0.9rem;
+}
+
+/* Responsive typography and layout */
+@media (max-width: 768px) {
+  .mac-terminal {
+    width: 95%;
+    border-radius: 0.5rem;
+  }
+
+  .mac-title {
+    font-size: 0.8rem;
+  }
+
+  .terminal-screen {
+    height: 55vh;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  #commandInput {
+    font-size: 0.85rem;
+  }
+
+  .mac-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mac-terminal {
+    width: 95%;
+    height: 80vh;
+  }
+
+  .terminal-screen {
+    height: 65vh;
+  }
+
+  .mac-title {
+    font-size: 0.7rem;
+  }
+
+  #commandInput {
+    font-size: 0.8rem;
+  }
 }
 
 .mac-header {
