@@ -2,7 +2,7 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
-  const HF_TOKEN = process.env.HF_TOKEN; // hidden in Vercel env settings
+  const HF_TOKEN = process.env.HF_TOKEN;
   const MODEL_URL = "https://router.huggingface.co/v1/chat/completions";
   const HF_MODEL_NAME = "SentientAGI/Dobby-Mini-Unhinged-Plus-Llama-3.1-8B:featherless-ai";
 
